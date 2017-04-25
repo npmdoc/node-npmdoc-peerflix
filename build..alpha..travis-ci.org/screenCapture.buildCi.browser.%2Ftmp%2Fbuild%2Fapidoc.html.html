@@ -54,119 +54,12 @@
 
     <li class="apidocModuleLi"><a href="#apidoc.module.peerflix">module peerflix</a><ol>
 
-        <li>
-
-            <a class="apidocElementLiA" href="#apidoc.element.peerflix.peerflix">
-            function <span class="apidocSignatureSpan"></span>peerflix
-            <span class="apidocSignatureSpan">(torrent, opts)</span>
-            </a>
-
-        </li>
-
-        <li>
-
-            <a class="apidocElementLiA" href="#apidoc.element.peerflix.toString">
-            function <span class="apidocSignatureSpan">peerflix.</span>toString
-            <span class="apidocSignatureSpan">()</span>
-            </a>
-
-        </li>
-
-    </ol></li>
-
-    <li class="apidocModuleLi"><a href="#apidoc.module.peerflix.toString">module peerflix.toString</a><ol>
-
-        <li>
-
-            <a class="apidocElementLiA" href="#apidoc.element.peerflix.toString.toString">
-            function <span class="apidocSignatureSpan">peerflix.</span>toString
-            <span class="apidocSignatureSpan">()</span>
-            </a>
-
-        </li>
-
     </ol></li>
 
 </ol></div>
 
 <div class="apidocSectionDiv">
 <h1><a href="#apidoc.module.peerflix" id="apidoc.module.peerflix">module peerflix</a></h1>
-
-
-    <h2>
-        <a href="#apidoc.element.peerflix.peerflix" id="apidoc.element.peerflix.peerflix">
-        function <span class="apidocSignatureSpan"></span>peerflix
-        <span class="apidocSignatureSpan">(torrent, opts)</span>
-        </a>
-    </h2>
-    <ul>
-    <li>description and source-code<pre class="apidocCodePre">peerflix = function (torrent, opts) {
-  if (!opts) opts = {}
-
-  // Parse blocklist
-  if (opts.blocklist) opts.blocklist = parseBlocklist(opts.blocklist)
-
-  var engine = torrentStream(torrent, xtend(opts, {port: opts.peerPort}))
-
-  // Just want torrent-stream to list files.
-  if (opts.list) return engine
-
-  // Pause/Resume downloading as needed
-  engine.on('uninterested', function () {
-    engine.swarm.pause()
-  })
-
-  engine.on('interested', function () {
-    engine.swarm.resume()
-  })
-
-  engine.server = createServer(engine, opts)
-
-  // Listen when torrent-stream is ready, by default a random port.
-  engine.on('ready', function () {
-    engine.server.listen(opts.port || 0, opts.hostname)
-  })
-
-  engine.listen()
-
-  return engine
-}</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
-    </ul>
-
-
-
-    <h2>
-        <a href="#apidoc.element.peerflix.toString" id="apidoc.element.peerflix.toString">
-        function <span class="apidocSignatureSpan">peerflix.</span>toString
-        <span class="apidocSignatureSpan">()</span>
-        </a>
-    </h2>
-    <ul>
-    <li>description and source-code<pre class="apidocCodePre">toString = function () {
-    return text;
-}</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
-    </ul>
-
-
-</div>
-
-<div class="apidocSectionDiv">
-<h1><a href="#apidoc.module.peerflix.toString" id="apidoc.module.peerflix.toString">module peerflix.toString</a></h1>
-
-
-    <h2>
-        <a href="#apidoc.element.peerflix.toString.toString" id="apidoc.element.peerflix.toString.toString">
-        function <span class="apidocSignatureSpan">peerflix.</span>toString
-        <span class="apidocSignatureSpan">()</span>
-        </a>
-    </h2>
-    <ul>
-    <li>description and source-code<pre class="apidocCodePre">function toString() { [native code] }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
-    </ul>
-
 
 </div>
 
